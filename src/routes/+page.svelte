@@ -1,6 +1,4 @@
 <script>
-	import welcome from '$lib/images/svelte-welcome.webp';
-	import welcome_fallback from '$lib/images/svelte-welcome.png';
 </script>
 
 <svelte:head>
@@ -20,7 +18,11 @@
 		Dev Hololog
 	</h1>
 
+
 	<h2 />
+
+	<div>프리텐다드</div>
+	적용된삘?
 </section>
 
 <style>
