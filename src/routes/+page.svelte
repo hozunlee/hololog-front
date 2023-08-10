@@ -1,4 +1,24 @@
 <script>
+	import Cake from '$lib/components/Cake.svelte'
+
+
+	export let data
+	let arrayLength = data.cakes.length
+
+
+	/**
+	 * 
+	 * @param arrayLength {number}
+	 */
+	const 랜덤숫자 = (arrayLength) => {
+		return Math.floor(Math.random() * arrayLength);
+	}
+
+	const 메인문장만들기 = () => {
+		메인문장 = data.cakes[랜덤숫자(arrayLength)]
+	}
+
+	let 메인문장 = data.cakes[랜덤숫자(arrayLength)]
 </script>
 
 <svelte:head>
@@ -6,6 +26,13 @@
 	<meta name="description" content="Svelte demo app" />
 </svelte:head>
 
+<div class="메인문장박스">
+	<button on:click={메인문장만들기} >new 🧀</button>
+	<Cake item={메인문장} />
+	<!-- <div class="button">
+		<Button>new</Button>
+	</div> -->
+</div>
 <section>
 	<h1>
 		<!-- <span class="welcome">
@@ -19,7 +46,6 @@
 	</h1>
 
 
-	<h2 />
 
 	<div>프리텐다드</div>
 	적용된삘?
@@ -38,19 +64,27 @@
 		width: 100%;
 	}
 
-	.welcome {
-		display: block;
-		position: relative;
-		width: 100%;
-		height: 0;
-		padding: 0 0 calc(100% * 495 / 2048) 0;
+	.메인문장박스 {
+		margin-top: 5rem;
+		text-align: center;
+	line-height: 1.3;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+
 	}
 
-	.welcome img {
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		top: 0;
-		display: block;
+	.메인문장박스 > button {
+		border: none;
+color: gray;
+font-size: small;
+cursor: pointer;
 	}
+
+/* .button {
+		display: inline-block;
+		width: 300px;
+		margin: 40px 0 50px 0;
+	} */
 </style>
