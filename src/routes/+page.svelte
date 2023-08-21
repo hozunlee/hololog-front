@@ -1,9 +1,11 @@
 <script>
 	import Cake from '$lib/components/Cake.svelte'
-
+	import { onMount } from 'svelte'
 
 	export let data
 	let arrayLength = data.cakes.length
+
+	$ : console.log('data.posts :>> ', data.posts);
 
 
 	/**
@@ -17,8 +19,25 @@
 	const 메인문장만들기 = () => {
 		메인문장 = data.cakes[랜덤숫자(arrayLength)]
 	}
+	/**
+	 *
+	 * @typedef {Object} cakeItem
+	 * @property {number} id
+	 * @property {string} item 문장 컨텐츠
+	 * @property {string} author 작가
+	 * @property {string} from 책이름
+	 * @property {string} [speaker] 책 안에서 말한 사람이 다를 경우
+	 */
 
-	let 메인문장 = data.cakes[랜덤숫자(arrayLength)]
+   	/** @type {cakeItem} */
+	let 메인문장
+	
+	onMount(() => {
+		// content here
+		메인문장 = data.cakes[랜덤숫자(data.cakes.length)]
+	});
+	
+	// 
 </script>
 
 <svelte:head>
@@ -26,13 +45,18 @@
 	<meta name="description" content="Svelte demo app" />
 </svelte:head>
 
-<div class="메인문장박스">
-	<button on:click={메인문장만들기} >new 🧀</button>
-	<Cake item={메인문장} />
-	<!-- <div class="button">
-		<Button>new</Button>
-	</div> -->
-</div>
+
+	{#if 메인문장}
+		 <div class="메인문장박스">
+			<button on:click={메인문장만들기} >new 🧀</button>
+			<Cake item={메인문장} />
+			<!-- <div class="button">
+				<Button>new</Button>
+			</div> -->
+		</div>
+	{/if}
+
+
 <section>
 	<h1>
 		<!-- <span class="welcome">

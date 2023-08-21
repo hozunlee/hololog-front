@@ -1,4 +1,5 @@
 <script>
+
 	import { spring } from 'svelte/motion';
 
 	let count = 0;
@@ -6,6 +7,7 @@
 	const displayed_count = spring();
 	$: displayed_count.set(count);
 	$: offset = modulo($displayed_count, 1);
+
 
 	/**
 	 * @param {number} n
