@@ -56,19 +56,17 @@
 {/if}
 <div class="구분선 div-transparent" />
 <section>
-	<h1>
-		<!-- <span class="welcome">
+	<!-- <span class="welcome">
 			<picture>
 				<source srcset={welcome} type="image/webp" />
 				<img src={welcome_fallback} alt="Welcome" />
 			</picture>
 		</span> -->
 
-		{#each data.posts as post}
-			<!-- content here -->
-			<Card card={post} />
-		{/each}
-	</h1>
+	{#each data.posts as post}
+		<!-- content here -->
+		<Card card={post} />
+	{/each}
 </section>
 
 <style>
@@ -78,10 +76,6 @@
 		justify-content: center;
 		align-items: center;
 		flex: 0.6;
-	}
-
-	h1 {
-		width: 100%;
 	}
 
 	.메인문장박스 {
@@ -106,21 +100,4 @@
 		width: 300px;
 		margin: 40px 0 50px 0;
 	} */
-
-	.구분선 {
-		position: relative;
-		margin-top: 10px;
-		height: 1px;
-	}
-
-	.div-transparent:before {
-		content: '';
-		position: absolute;
-		top: 0;
-		left: 5%;
-		right: 5%;
-		width: 90%;
-		height: 1px;
-		background-image: linear-gradient(to right, transparent, rgb(48, 49, 51), transparent);
-	}
 </style>
