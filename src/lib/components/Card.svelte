@@ -1,6 +1,7 @@
 <script>
 	export let card
 	import dayjs from 'dayjs'
+	import Image from './Image.svelte'
 
 	const publishedAt = dayjs(card.attributes.publishedAt).format('YY/MM/DD')
 	const keywords = card.attributes.keyword.replace(/(\s*)/g, '').split(',')
@@ -12,10 +13,7 @@
 <article class="">
 	<header>
 		<a href={`/post/${card.id}`}>
-			<div class="post-thumbnail">
-				<!-- <NextImage image={card.attributes.main_cover} /> -->
-				<img src={imgSrc} alt="커버이미지" />
-			</div>
+			<Image src={imgSrc} />
 		</a>
 	</header>
 	<div class="text-container">
@@ -54,37 +52,6 @@
 		padding: 0 1rem;
 	}
 
-	.post-thumbnail {
-		width: 100%;
-		position: relative;
-		overflow: hidden;
-		padding-top: 50%; /* 직사각형 비율에 따라 변경하세요 (예: 가로 2: 세로 1 = 50%) */
-		padding-left: 2rem;
-		padding-right: 2rem;
-		/* max-height: 386px;
-		width: 100%;
-		position: relative;
-		box-sizing: border-box;
-		overflow: hidden;
-		display: flex;
-		align-items: center;
-		justify-content: center; */
-	}
-
-	.post-thumbnail > img {
-		width: 100%;
-		height: 100%;
-		position: absolute;
-		top: 0;
-		left: 0;
-		object-fit: cover;
-		/* border: none;
-		padding: 1rem;
-		object-fit: cover;
-		height: 100%;
-		inset: 0px; */
-	}
-
 	.text-container > h2 {
 		margin: 0;
 		font-size: 1.5rem;
@@ -105,6 +72,7 @@
 		line-height: 1.5;
 		font-size: 0.8rem;
 		color: #acacac;
+		margin: 1rem 0;
 	}
 
 	.card-keyword {

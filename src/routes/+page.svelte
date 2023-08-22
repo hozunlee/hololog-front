@@ -6,8 +6,6 @@
 	export let data
 	let arrayLength = data.cakes.length
 
-	$: console.log('data.posts :>> ', data.posts)
-
 	/**
 	 *
 	 * @param arrayLength {number}
