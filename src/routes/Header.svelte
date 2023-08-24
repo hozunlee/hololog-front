@@ -1,14 +1,12 @@
 <script>
-	import { page } from '$app/stores';
-	import logo from '$lib/images/logo.png';
-	import github from '$lib/images/github.svg';
+	import { page } from '$app/stores'
+	import logo from '$lib/images/logo.png'
+	import github from '$lib/images/github.svg'
 </script>
 
 <header class="container">
 	<div class="corner">
-		<a href="https://kit.svelte.dev">
-			<img src={logo} alt="SvelteKit" />
-		</a>
+		<a href="/" class="text"> HOLOLOG </a>
 	</div>
 
 	<nav>
@@ -25,7 +23,6 @@
 			<li aria-current={$page.url.pathname === '/about' ? 'page' : undefined}>
 				<a href="/about">About</a>
 			</li>
-
 		</ul>
 		<svg viewBox="0 0 2 3" aria-hidden="true">
 			<path d="M0,0 L0,3 C0.5,3 0.5,3 1,2 L2,0 Z" />
@@ -137,5 +134,19 @@
 
 	a:hover {
 		color: var(--color-theme-1);
+	}
+
+	.text {
+		font-weight: bold;
+		color: var(--text1);
+		font-size: 1.3125rem;
+		text-decoration: none;
+		font-family: 'Fira Mono', monospace;
+	}
+
+	@media (max-width: 1075px) {
+		.text {
+			font-size: 0.7rem;
+		}
 	}
 </style>
