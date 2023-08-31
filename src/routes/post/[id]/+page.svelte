@@ -1,6 +1,5 @@
 <script>
 	import { page } from '$app/stores'
-	import { PUBLIC_BLOG_URL } from '$env/static/public'
 	import Image from '$lib/components/Image.svelte'
 	import dayjs from 'dayjs'
 	import SvelteMarkdown from 'svelte-markdown'

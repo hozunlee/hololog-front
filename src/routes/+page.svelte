@@ -1,4 +1,5 @@
 <script>
+	import { page } from '$app/stores'
 	import Cake from '$lib/components/Cake.svelte'
 	import Card from '$lib/components/Card.svelte'
 	import { onMount } from 'svelte'
@@ -40,7 +41,17 @@
 
 <svelte:head>
 	<title>Hololog</title>
-	<meta name="description" content="holo <완전한테크기록> log" />
+	<meta name="description" content="holo <비교할 수 없는 tech 기록> log" />
+
+	<meta property="og:title" content="Hololog" />
+	<meta property="og:description" content="holo <비교할 수 없는 tech 기록> log" />
+	<meta
+		property="og:image"
+		content="https://mjxiofcpqnyfnskvoxut.supabase.co/storage/v1/object/public/strapi-uploads/ogimage_1693477365283.svg"
+	/>
+	<meta property="og:url" content={$page.url.href} />
+	<meta property="og:type" content="article" />
+	<meta property="og:site_name" content="Hololog : 비교할 수 없는 Tech 기록" />
 </svelte:head>
 
 {#if 메인문장}
