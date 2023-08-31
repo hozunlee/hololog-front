@@ -50,7 +50,7 @@
 		content="https://mjxiofcpqnyfnskvoxut.supabase.co/storage/v1/object/public/strapi-uploads/ogimage_1693477365283.svg"
 	/>
 	<meta property="og:url" content={$page.url.href} />
-	<meta property="og:type" content="article" />
+	<meta property="og:type" content="website" />
 	<meta property="og:site_name" content="Hololog : 비교할 수 없는 Tech 기록" />
 </svelte:head>
 
