@@ -14,7 +14,7 @@
 
 	<footer>
 		<p>
-			visit <a href=" https://climbing-scraper-c52.notion.site/b79cb7a85b3040fe96036795ed2e1cec"
+			visit <a href="https://climbing-scraper-c52.notion.site/b79cb7a85b3040fe96036795ed2e1cec"
 				>my tech portfolio
 			</a> to contact hojun
 		</p>
