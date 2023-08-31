@@ -142,6 +142,7 @@
 		font-size: 1.3125rem;
 		text-decoration: none;
 		font-family: 'Fira Mono', monospace;
+		/* border-bottom: 1px solid var(--color-theme-3); */
 	}
 
 	@media (max-width: 1075px) {

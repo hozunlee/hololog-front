@@ -26,6 +26,7 @@ body {
 	-webkit-text-size-adjust: 100%;
 	min-height: 100vh;
 	margin: 0;
+	cursor: default;
 	background-attachment: fixed;
 	background-color: var(--color-bg-1);
 	background-size: 100vw 100vh;
@@ -132,4 +133,16 @@ button:focus:not(:focus-visible) {
 	width: 90%;
 	height: 1px;
 	background-image: linear-gradient(to right, transparent, var(--color-theme-2), transparent);
+}
+
+code {
+	background-color: var(--color-theme-3);
+	padding: 5px;
+	border-radius: 5px;
+}
+
+pre > code {
+	background-color: transparent;
+	padding: 0;
+	border-radius: none;
 }

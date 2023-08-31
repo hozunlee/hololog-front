@@ -1,4 +1,6 @@
 <script>
+	import { page } from '$app/stores'
+	import { PUBLIC_BLOG_URL } from '$env/static/public'
 	import Image from '$lib/components/Image.svelte'
 	import dayjs from 'dayjs'
 	import SvelteMarkdown from 'svelte-markdown'
@@ -8,6 +10,20 @@
 
 	const publishedAt = dayjs(data.post.attributes.publishedAt).format('YY/MM/DD')
 </script>
+
+<svelte:head>
+	<title>{data.post.attributes.title} | Hololog</title>
+	<meta name="description" content={data.post.attributes.desc} />
+	<meta charset="UTF-8" />
+
+	<!-- og tag -->
+	<meta property="og:title" content={data.post.attributes.title} />
+	<meta property="og:description" content={data.post.attributes.desc} />
+	<meta property="og:image" content={data.post.attributes.cover.data.attributes.url} />
+	<meta property="og:url" content={$page.url.href} />
+	<meta property="og:type" content="article" />
+	<meta property="og:site_name" content="Hololog : 비교할 수 없는 Tech 기록" />
+</svelte:head>
 
 <section>
 	<hgroup>

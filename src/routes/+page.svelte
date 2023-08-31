@@ -39,8 +39,8 @@
 </script>
 
 <svelte:head>
-	<title>Home</title>
-	<meta name="description" content="Svelte demo app" />
+	<title>Hololog</title>
+	<meta name="description" content="holo <완전한테크기록> log" />
 </svelte:head>
 
 {#if 메인문장}
