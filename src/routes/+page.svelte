@@ -47,7 +47,7 @@
 	<meta property="og:description" content="holo <비교할 수 없는 tech 기록> log" />
 	<meta
 		property="og:image"
-		content="https://mjxiofcpqnyfnskvoxut.supabase.co/storage/v1/object/public/strapi-uploads/ogimage_1693477365283.svg"
+		content="https://mjxiofcpqnyfnskvoxut.supabase.co/storage/v1/object/public/strapi-uploads/ogimg01_1693478745390.jpeg"
 	/>
 	<meta property="og:url" content={$page.url.href} />
 	<meta property="og:type" content="website" />
