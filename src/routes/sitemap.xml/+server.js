@@ -6,11 +6,11 @@ export async function GET({ fetch, setHeaders }) {
 	const site = 'https://hololog.dev'
 
 	const response = await fetch('https://server-hololog.onrender.com/api/posts')
-	if (!response.ok) {
+	if (!response) {
 		throw new Error('Failed to fetch posts.')
 	}
 	const posts = await response.json()
-	if (!posts.ok) {
+	if (!posts) {
 		throw new Error('Failed to fetch posts.')
 	}
 
@@ -26,7 +26,7 @@ export async function GET({ fetch, setHeaders }) {
 			(post) => `
   <url>
   <loc>${site}/post/${post.id}</loc>
-  <changefreq>weekly</changefreq>
+  <changefreq>daily</changefreq>
   <lastmod>${post.attributes.publishedAt.split('T')[0]}</lastmod>
   </url>
   `
