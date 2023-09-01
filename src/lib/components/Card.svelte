@@ -7,7 +7,7 @@
 	const keywords = card.attributes.keyword.replace(/(\s*)/g, '').split(',')
 	const shortDesc = card.attributes.desc.slice(0, 100)
 
-	const imgSrc = card.attributes.cover.data.attributes.url
+	const imgSrc = card.attributes.cover.data.attributes.formats.thumbnail.url
 </script>
 
 <article class="">
