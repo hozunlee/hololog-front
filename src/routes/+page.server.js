@@ -1,8 +1,6 @@
 import { fetchAPI } from '$lib/components/utills/api'
 import { supabase } from '$lib/supabase/supabaseClient'
 
-export const revalidate = 0 // seconds
-
 export async function load() {
 	const { data } = await supabase.from('cakes').select('id, author, from, item, speaker')
 
