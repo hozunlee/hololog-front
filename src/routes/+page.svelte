@@ -5,7 +5,6 @@
 	import { onMount } from 'svelte'
 
 	export let data
-	console.log('data :>> ', data)
 	$: ({ cakes, posts } = data.props)
 	$: arrayLength = cakes.length
 
