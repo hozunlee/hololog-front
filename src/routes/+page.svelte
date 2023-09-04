@@ -5,7 +5,9 @@
 	import { onMount } from 'svelte'
 
 	export let data
-	let arrayLength = data.cakes.length
+	console.log('data :>> ', data)
+	$: ({ cakes, posts } = data.props)
+	$: arrayLength = cakes.length
 
 	/**
 	 *
@@ -16,7 +18,7 @@
 	}
 
 	const 메인문장만들기 = () => {
-		메인문장 = data.cakes[랜덤숫자(arrayLength)]
+		메인문장 = cakes[랜덤숫자(arrayLength)]
 	}
 	/**
 	 *
@@ -33,7 +35,7 @@
 
 	onMount(() => {
 		// content here
-		메인문장 = data.cakes[랜덤숫자(data.cakes.length)]
+		메인문장 = cakes[랜덤숫자(cakes.length)]
 	})
 
 	//
@@ -72,7 +74,7 @@
 			</picture>
 		</span> -->
 
-	{#each data.posts as post}
+	{#each posts as post}
 		<!-- content here -->
 		<Card card={post} />
 	{/each}

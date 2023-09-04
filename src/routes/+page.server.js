@@ -10,7 +10,7 @@ export async function load() {
 	})
 
 	return {
-		cakes: data ?? [],
-		posts: res
+		props: { cakes: data ?? [], posts: res },
+		revalidate: 10 // In seconds
 	}
 }
