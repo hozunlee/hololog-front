@@ -5,7 +5,7 @@ export async function GET({ fetch, setHeaders }) {
 
 	const site = 'https://hololog.dev'
 
-	const response = await fetch('https://server-hololog.onrender.com/api/posts')
+	const response = await fetch('https://hostile-tommi-hololog.koyeb.app/api/posts')
 	if (!response) {
 		throw new Error('Failed to fetch posts.')
 	}
