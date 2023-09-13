@@ -63,7 +63,7 @@
 	figure {
 		width: 100%;
 		padding: 0 1rem;
-		margin: 4rem auto 0px;
+		margin: 2rem auto 0px;
 		margin-bottom: 3rem;
 	}
 
