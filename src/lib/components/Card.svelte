@@ -21,12 +21,14 @@
 		<p class="card-desc">
 			{shortDesc}... <a href={`/post/${card.id}`}>더보기</a>
 		</p>
-		{#each keywords as word}
-			<!-- content here -->
-			<span class="card-keyword">
-				{word}
-			</span>
-		{/each}
+		<div>
+			{#each keywords as word}
+				<!-- content here -->
+				<span class="card-keyword">
+					{word}
+				</span>
+			{/each}
+		</div>
 
 		<div class="card-time">{publishedAt}</div>
 	</div>
@@ -76,7 +78,7 @@
 	}
 
 	.card-keyword {
-		margin: 3px;
+		margin-right: 3px;
 		padding: 3px;
 		border: 1px solid var(--color-theme-3);
 		background-color: var(--color-theme-3);
