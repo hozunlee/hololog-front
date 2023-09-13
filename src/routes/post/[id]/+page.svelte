@@ -23,6 +23,7 @@
 	<meta property="og:url" content={$page.url.href} />
 	<meta property="og:type" content="article" />
 	<meta property="og:site_name" content="Hololog : 비교할 수 없는 Tech 기록" />
+	<meta name="naver-site-verification" content="ab0c76700bc2d1b64f9fc8d624acc59336e69ec1" />
 </svelte:head>
 
 <section>
