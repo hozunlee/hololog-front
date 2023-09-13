@@ -41,7 +41,8 @@
 </script>
 
 <svelte:head>
-	<title>Hololog</title>
+	<title>hololog</title>
+	<meta name="title" content="hololog" />
 	<meta name="description" content="holo <비교할 수 없는 tech 기록> log" />
 
 	<meta property="og:title" content="Hololog" />

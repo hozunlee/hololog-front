@@ -12,6 +12,7 @@
 
 <svelte:head>
 	<title>{data.post.attributes.title} | Hololog</title>
+	<meta name="title" content="hololog" />
 	<meta name="description" content={data.post.attributes.desc} />
 	<meta charset="UTF-8" />
 
