@@ -7,12 +7,12 @@
 	const source = data.post.attributes.content
 	const imgURL = data.post.attributes.cover.data.attributes.url
 
-	const publishedAt = dayjs(data.post.attributes.publishedAt).format('YY/MM/DD')
+	const publishedAt = dayjs(data.post.attributes.publishedAt).format('MM/DD/YYYY')
 </script>
 
 <svelte:head>
-	<title>{data.post.attributes.title} | Hololog</title>
-	<meta name="title" content="hololog" />
+	<title>{data.post.attributes.title} | hololog</title>
+	<meta name="title" content={data.post.attributes.title} />
 	<meta name="description" content={data.post.attributes.desc} />
 	<meta charset="UTF-8" />
 

@@ -3,7 +3,7 @@
 	import dayjs from 'dayjs'
 	import Image from './Image.svelte'
 
-	const publishedAt = dayjs(card.attributes.publishedAt).format('YY/MM/DD')
+	const publishedAt = dayjs(card.attributes.publishedAt).format('MM/DD/YYYY')
 	const keywords = card.attributes.keyword.replace(/(\s*)/g, '').split(',')
 	const shortDesc = card.attributes.desc.slice(0, 100)
 
