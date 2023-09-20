@@ -37,4 +37,9 @@
 		height: 100%;
 		inset: 0px; */
 	}
+
+	img:hover {
+		transform: scale(1.05);
+		transition: transform 0.2s;
+	}
 </style>

@@ -12,7 +12,7 @@
 
 <article class="">
 	<header>
-		<a href={`/post/${card.id}`}>
+		<a class="img-hover" href={`/post/${card.id}`}>
 			<Image src={imgSrc} />
 		</a>
 	</header>

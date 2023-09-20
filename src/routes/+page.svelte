@@ -42,7 +42,7 @@
 
 <svelte:head>
 	<title>hololog</title>
-	<meta name="title" content="hololog" />
+	<meta name="title" content="hololog | 비교할수없는테크기록" />
 	<meta name="description" content="holo <비교할 수 없는 tech 기록> log" />
 
 	<meta property="og:title" content="Hololog" />
