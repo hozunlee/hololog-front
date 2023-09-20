@@ -17,7 +17,7 @@
 		</a>
 	</header>
 	<div class="text-container">
-		<h2 class="card-title">{card.attributes.title}</h2>
+		<a href={`/post/${card.id}`}><h2 class="card-title">{card.attributes.title}</h2></a>
 		<p class="card-desc">
 			{shortDesc}... <a href={`/post/${card.id}`}>더보기</a>
 		</p>
@@ -54,7 +54,16 @@
 		padding: 0 1rem;
 	}
 
-	.text-container > h2 {
+	.text-container > a {
+		text-decoration: none;
+		color: var(--color-text);
+	}
+
+	.text-container > a > h2:hover {
+		color: rgb(0, 53, 113);
+	}
+
+	.text-container > a > h2 {
 		margin: 0;
 		font-size: 1.5rem;
 		word-break: keep-all;
@@ -94,7 +103,7 @@
 			font-weight: 200;
 		}
 
-		.text-container > h2 {
+		.text-container > a > h2 {
 			font-size: 1.3rem;
 		}
 	}

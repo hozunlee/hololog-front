@@ -76,7 +76,7 @@
 
 	h1 {
 		margin-top: 2rem;
-		font-size: 3rem;
+		font-size: 1.5rem;
 		line-height: 1.5;
 		letter-spacing: -0.004em;
 		font-weight: 800;
@@ -98,7 +98,6 @@
 
 	@media (max-width: 1024px) {
 		h1 {
-			font-size: 2.25rem;
 		}
 	}
 </style>
