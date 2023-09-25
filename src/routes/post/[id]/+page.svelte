@@ -3,7 +3,10 @@
 	import Image from '$lib/components/Image.svelte'
 	import dayjs from 'dayjs'
 	import SvelteMarkdown from 'svelte-markdown'
+	import Giscus from '$lib/components/utills/Giscus.svelte'
+
 	export let data
+
 	const source = data.post.attributes.content
 	const imgURL = data.post.attributes.cover.data.attributes.url
 
@@ -37,6 +40,22 @@
 	</div>
 	<figure class="container">
 		<SvelteMarkdown {source} />
+		<footer>
+			<Giscus
+				repo="hozunlee/hololog-front"
+				repoId="R_kgDOKBpLyQ"
+				category="Comment"
+				categoryId="DIC_kwDOKBpLyc4CZmQO"
+				mapping="pathname"
+				term="Welcome to @giscus/svelte component!"
+				strict="1"
+				reactionsEnabled="1"
+				emitMetadata="0"
+				inputPosition="bottom"
+				theme="light"
+				lang="ko"
+			/>
+		</footer>
 	</figure>
 </section>
 
@@ -94,6 +113,9 @@
 	.separator {
 		margin-left: 0.2rem;
 		margin-right: 0.2rem;
+	}
+	footer {
+		width: 100%;
 	}
 
 	@media (max-width: 1024px) {
