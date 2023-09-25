@@ -7,13 +7,16 @@
 	const keywords = card.attributes.keyword.replace(/(\s*)/g, '').split(',')
 	const shortDesc = card.attributes.desc.slice(0, 100)
 
-	const imgSrc = card.attributes.cover.data.attributes.formats.thumbnail.url
+	// 용량 작은거
+	// const imgSrc = card.attributes.cover.data.attributes.formats.thumbnail.url
+	// 기본 용량 webp 위주
+	const imgSrc2 = card.attributes.cover.data.attributes.url
 </script>
 
 <article class="">
 	<header>
 		<a class="img-hover" href={`/post/${card.id}`}>
-			<Image src={imgSrc} />
+			<Image src={imgSrc2} />
 		</a>
 	</header>
 	<div class="text-container">
