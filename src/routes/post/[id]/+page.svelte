@@ -14,7 +14,7 @@
 </script>
 
 <svelte:head>
-	<title>{data.post.attributes.title} | hololog</title>
+	<title>{data.post.attributes.title} - hololog | 비교할 수 없는 tech 기록</title>
 	<meta name="title" content={data.post.attributes.title} />
 	<meta name="description" content={data.post.attributes.desc} />
 	<meta charset="UTF-8" />
