@@ -31,7 +31,7 @@ Hololog는 사용자 친화적인 인터페이스와 자연스러운 성장 경�
 	<meta name="title" content="About - hololog | holo <비교할 수 없는 tech 기록> log" />
 	<meta
 		name="description"
-		content="소개페이지 | holo <비교할 수 없는 tech 기록> log | hololog에서 우리는 개발자가 새로운 기술을 탐색하고 활용하는 방식을 혁신하는 임무에 착수했습니다. 우리 웹사이트는 아직 개발되지 않은 솔루션과 열망하는 마음 사이의 격차를 해소하면서 개발 지식의 막대한 잠재력을 잠금 해제하려는 사람들을 위한 안식처입니다. 사용자 친화적인 인터페이스와 자연스럽고 모험적이며 건전한 성장에 대한 약속을 통해 Hololog는 경계를 허물고 혁신을 수용하는 데 성공하는 같은 생각을 가진 개인의 커뮤니티를 육성합니다. 우리는 개발자에게 필요한 도구와 리소스를 제공함으로써 무한한 가능성이 현실이 되는 미래를 만들 수 있다고 믿습니다. 흥미진진한 발견과 변화의 여정에 함께하세요."
+		content="소개페이지 | holo <비교할 수 없는 tech 기록> log | hololog에서 우리는 개발자가 새로운 기술을 탐색하고 활용하는 방식을 혁신하는 임무에 착수했습니다. 우리 웹사이트는 아직 개발되지 않은 솔루션과 열망하는 마음 사이의 격차를 해소하면서 개발 지식의 막대한 잠재력을 잠금 해제하려는 사람들을 위한 안식처입니다. 사용자 친화적인 인터페이스와 자연스럽고 모험적이며 건전한 성장에 대한 약속을 통해 Hololog는 경계를 허물고 혁신을 수용하는 데 성공하는 같은 생각을 가진 개인의 커뮤니티를 육성합니다. 우리는 개발자에게 필요한 도구와 리소스를 제공함으로써 무한한 가능성이 현실이 되는 미래를 만들 수 있다고 믿습니다."
 	/>
 
 	<meta property="og:title" content="About | hololog" />
@@ -55,14 +55,25 @@ Hololog는 사용자 친화적인 인터페이스와 자연스러운 성장 경�
 	<div class="container">
 		<figure>
 			<h1>Hojun Lee</h1>
-			<h2>Under construction</h2>
+			<div><span class="형광펜"> Role </span> | Software Engineer</div>
+			<div><span class="형광펜"> Email </span> | ho2yahh@gmail.com</div>
+			<div class="">
+				<span class="형광펜"> GitHub </span> |
+				<a href="https://github.com/hozunlee">https://github.com/hozunlee</a>
+			</div>
+			<div class="last-info">
+				<span class="형광펜"> Portfolio </span> |
+				<a href="https://climbing-scraper-c52.notion.site/b79cb7a85b3040fe96036795ed2e1cec"
+					>my tech story by notion</a
+				>
+			</div>
 		</figure>
 
 		<figure>
 			<div>
 				<h1>holo + log란</h1>
 				<p>
-					비교할 수 없는 기술(holo)<br />읽고 싶은 기록(log)<br /> 그리고 쓸모있는 비즈니스를 만드는
+					(holo) 비교할 수 없는 기술<br />(log) 읽고 싶은 기록<br /> 그리고 쓸모있는 비즈니스를 만드는
 					일에 대한 글을 쓰는 블로그입니다.
 				</p>
 				<p>영업, 기획자, 콘텐츠 마케터를 거쳐 풀스택 개발자의 길을 걸어가고 있습니다.</p>
@@ -114,6 +125,17 @@ Hololog는 사용자 친화적인 인터페이스와 자연스러운 성장 경�
 		padding: 0 1rem;
 		margin: 2rem auto 0px;
 		margin-bottom: 3rem;
+	}
+
+	figure .형광펜 {
+		background-color: blue;
+		color: white;
+		padding: 0 2px;
+	}
+
+	figure > .last-info {
+		padding-bottom: 2rem;
+		border-bottom: solid 1px var(--color-theme-1);
 	}
 
 	.img-box {
