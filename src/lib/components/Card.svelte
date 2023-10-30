@@ -1,4 +1,5 @@
 <script>
+	/**	 * @type {any}	 */
 	export let card
 	import dayjs from 'dayjs'
 	import Image from './Image.svelte'
@@ -20,7 +21,7 @@
 		</a>
 	</header>
 	<div class="text-container">
-		<a href={`/post/${card.id}`}><h1 class="card-title">{card.attributes.title}</h1></a>
+		<a href={`/post/${String(card.id)}`}><h1 class="card-title">{card.attributes.title}</h1></a>
 		<p class="card-desc">
 			{shortDesc}... <a href={`/post/${card.id}`}>더보기</a>
 		</p>
