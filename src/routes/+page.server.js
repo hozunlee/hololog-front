@@ -26,7 +26,8 @@ export async function load() {
 
 	const res = await fetchAPI('/posts', {
 		populate: ['cover'],
-		sort: ['id:desc']
+		sort: ['id:desc'],
+		fields: ['title', 'desc', 'keyword', 'publishedAt']
 	})
 
 	return {
