@@ -16,14 +16,14 @@
 
 <article class="">
 	<header>
-		<a class="img-hover" href={`/post/${card.id}`}>
+		<a class="img-hover" href={`/post/${String(card.id)}`}>
 			<Image src={imgSrc2} />
 		</a>
 	</header>
 	<div class="text-container">
 		<a href={`/post/${String(card.id)}`}><h1 class="card-title">{card.attributes.title}</h1></a>
 		<p class="card-desc">
-			{shortDesc}... <a href={`/post/${card.id}`}>더보기</a>
+			{shortDesc}... <a href={`/post/${String(card.id)}`}>더보기</a>
 		</p>
 		<div>
 			{#each keywords as word}
