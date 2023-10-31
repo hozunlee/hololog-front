@@ -6,20 +6,22 @@
 
 <section>
 	<div class="container">
-		<h1>Tech에 대한 모든 것을 <span class="font-color">모아서 기록</span>합니다.</h1>
-		{#each data.series as { attributes }}
-			<!-- content here -->
-			<div class="card">
-				<!-- <div class="card-title">카드 제목</div> -->
-				<a href={`/series/${attributes.title}`}
-					><div class="card-description">{attributes.title}</div></a
-				>
-				<div class="card-footer">
-					<div class="author">last update</div>
-					<div class="date">{dayjs(attributes.updatedAt).format('MM/DD/YYYY')}</div>
+		<h1>Tech에 대한 모든 것을 <br /><span class="font-color">모아서 기록</span>합니다.</h1>
+		<div class="card-box">
+			{#each data.series as { attributes }}
+				<!-- content here -->
+				<div class="card">
+					<!-- <div class="card-title">카드 제목</div> -->
+					<a href={`/series/${attributes.title}`}
+						><div class="card-description">{attributes.title}</div></a
+					>
+					<div class="card-footer">
+						<div class="author">last update</div>
+						<div class="date">{dayjs(attributes.updatedAt).format('MM/DD/YYYY')}</div>
+					</div>
 				</div>
-			</div>
-		{/each}
+			{/each}
+		</div>
 	</div>
 </section>
 
@@ -37,9 +39,6 @@
 
 	section > .container {
 		max-width: 600px;
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: flex-start;
 	}
 
 	a {
@@ -54,6 +53,14 @@
 
 	h1 {
 		margin-bottom: 1.5rem;
+		padding-left: 0.7rem;
+	}
+
+	.card-box {
+		width: 100%;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: flex-start;
 	}
 
 	.font-color {
@@ -106,6 +113,12 @@
 		.card {
 			/* flex: 0 0 100%; */
 			margin: 0 2rem;
+		}
+	}
+
+	@media (min-width: 700px) {
+		br {
+			display: none;
 		}
 	}
 </style>

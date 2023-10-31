@@ -5,7 +5,11 @@
 	import Image from './Image.svelte'
 
 	const publishedAt = dayjs(card.attributes.publishedAt).format('MM/DD/YYYY')
-	const keywords = card.attributes.keyword.replace(/(\s*)/g, '').split(',')
+	/**	 * @type {Array<string>}	 */
+	let keywords
+	if (card.attributes.keyword) {
+		keywords = card.attributes.keyword.replace(/(\s*)/g, '').split(',')
+	}
 	const shortDesc = card.attributes.desc.slice(0, 100)
 
 	// 용량 작은거
@@ -25,14 +29,17 @@
 		<p class="card-desc">
 			{shortDesc}... <a href={`/post/${String(card.id)}`}>더보기</a>
 		</p>
-		<div>
-			{#each keywords as word}
-				<!-- content here -->
-				<span class="card-keyword">
-					{word}
-				</span>
-			{/each}
-		</div>
+		{#if keywords}
+			<!-- content here -->
+			<div>
+				{#each keywords as word}
+					<!-- content here -->
+					<span class="card-keyword">
+						{word}
+					</span>
+				{/each}
+			</div>
+		{/if}
 
 		<div class="card-time">{publishedAt}</div>
 	</div>
@@ -41,7 +48,7 @@
 
 <style>
 	article {
-		margin: 1rem;
+		margin: 1rem 0;
 		width: 100%;
 		height: 100%;
 		max-width: 700px;
