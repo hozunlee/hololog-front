@@ -1,9 +1,29 @@
 <script>
+	import { page } from '$app/stores'
 	import Card from '$lib/components/Card.svelte'
 
 	export let data
-	console.log('data :>> ', data)
 </script>
+
+<!-- meta -->
+<svelte:head>
+	<title>Series - hololog | 비교할 수 없는 tech 기록</title>
+	<meta name="title" content="About - hololog | holo <비교할 수 없는 tech 기록> log" />
+	<meta
+		name="description"
+		content="연재페이지 | holo <비교할 수 없는 tech 기록> log | hololog에서 우리는 개발자가 새로운 기술을 탐색하고 활용하는 방식을 혁신하는 임무에 착수했습니다. "
+	/>
+
+	<meta property="og:title" content="Series | hololog" />
+	<meta property="og:description" content="holo <비교할 수 없는 tech 기록> log" />
+	<meta
+		property="og:image"
+		content="https://mjxiofcpqnyfnskvoxut.supabase.co/storage/v1/object/public/strapi-uploads/ogimg01_1693478745390.jpeg"
+	/>
+	<meta property="og:url" content={$page.url.href} />
+	<meta property="og:type" content="website" />
+	<meta property="og:site_name" content="Hololog | 비교할 수 없는 Tech 기록" />
+</svelte:head>
 
 <section>
 	<div class="container">
