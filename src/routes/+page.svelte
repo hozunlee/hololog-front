@@ -63,6 +63,7 @@
 {#if 메인문장}
 	<div class="메인문장박스">
 		<button on:click={메인문장만들기}>new 🧀</button>
+		
 		<Cake item={메인문장} />
 		<!-- <div class="button">
 				<Button>new</Button>

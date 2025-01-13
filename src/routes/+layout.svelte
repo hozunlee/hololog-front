@@ -1,12 +1,13 @@
 <script>
+	import "../app.css";
 	import Header from './Header.svelte'
-
+	
 	import './styles.css'
 	import '@fontsource/material-icons'
 	import { dev } from '$app/environment'
 	import { inject } from '@vercel/analytics'
 	inject({ mode: dev ? 'development' : 'production' })
-
+	
 	import Ga from '$lib/components/utills/Ga.svelte'
 </script>
 
