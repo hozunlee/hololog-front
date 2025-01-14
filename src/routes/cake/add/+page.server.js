@@ -56,10 +56,6 @@ export const actions = {
 				}
 			])
 			.select()
-		console.log(error, '에러입니다아앙아아')
-
-		console.log('인서트 박았니?????????????????/')
-		console.log('성공 data :>> ', data)
 		if (error) {
 			return fail(500, {
 				error: '저장 중 오류가 발생했습니다'
