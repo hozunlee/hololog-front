@@ -38,7 +38,7 @@ export const actions = {
 		const author = formData.get('author')
 		const speaker = formData.get('speaker')
 
-		if (!item || !from || !author) {
+		if (!item || !from) {
 			return fail(400, {
 				error: '모든 필드를 입력해주세요'
 			})
@@ -56,6 +56,8 @@ export const actions = {
 				}
 			])
 			.select()
+
+		console.log('data 저장후 :>> ', data, error)
 		if (error) {
 			return fail(500, {
 				error: '저장 중 오류가 발생했습니다'
