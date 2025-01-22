@@ -1,38 +1,27 @@
-# create-svelte
+# HOLOLOG : Tech blog by hojun
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+## 기술스택
 
-## Creating a project
+App : svelteKit (SSR)
+Css : tailwind + shadCN
+DB : supabase
+CMS : strapi
+Deploy : koyeb(cms server) | vercel (app)
 
-If you're seeing this, you've probably already done this step. Congrats!
+## 실행방법
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
-
-# create a new project in my-app
-npm create svelte@latest my-app
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+자신의 DB와 strapi를 연결한 후 실행
 
 ```bash
+npm i
 npm run dev
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
 ```
 
-## Building
+update log
+250123 01:00
 
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+- 메인화면 pagination 구현
+- strapi api call : [pagination](https://docs.strapi.io/dev-docs/api/rest/sort-pagination)
+- svelte-shadcn [pagination](https://www.shadcn-svelte.com/docs/components/pagination) 활용
+- add lucide icon [Link](https://lucide.dev/guide/packages/lucide-svelte)
