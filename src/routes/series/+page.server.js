@@ -8,6 +8,6 @@ export async function load({ params }) {
 	})
 
 	return {
-		series: res
+		series: res.posts
 	}
 }

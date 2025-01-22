@@ -3,6 +3,8 @@
 	import dayjs from 'dayjs'
 
 	export let data
+
+	console.log('data.series[0] :>> ', data.series[0])
 </script>
 
 <!-- meta -->
