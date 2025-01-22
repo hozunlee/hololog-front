@@ -42,7 +42,7 @@ export async function fetchAPI(path, urlParamsObject = {}, options = {}) {
 		console.error('Error')
 		throw new Error(`An error occured please try again`)
 	}
-	const data = response.data.data
 
-	return data
+	const { data, meta: pagination } = response.data
+	return { posts: data, pagination }
 }

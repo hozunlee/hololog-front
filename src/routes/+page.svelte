@@ -1,11 +1,11 @@
 <script>
 	import { page } from '$app/stores'
 	import Cake from '$lib/components/Cake.svelte'
-	import Card from '$lib/components/Card.svelte'
+	import CardList from '$lib/components/CardList.svelte'
 	import { onMount } from 'svelte'
 
 	export let data
-	$: ({ cakes, posts } = data.props)
+	$: ({ cakes, postInfo } = data.props)
 	$: arrayLength = cakes.length
 
 	/**
@@ -63,7 +63,7 @@
 {#if 메인문장}
 	<div class="메인문장박스">
 		<button on:click={메인문장만들기}>new 🧀</button>
-		
+
 		<Cake item={메인문장} />
 		<!-- <div class="button">
 				<Button>new</Button>
@@ -79,10 +79,7 @@
 			</picture>
 		</span> -->
 
-	{#each posts as post}
-		<!-- content here -->
-		<Card card={post} />
-	{/each}
+	<CardList {postInfo} />
 </section>
 
 <style>
@@ -92,6 +89,7 @@
 		justify-content: center;
 		align-items: center;
 		flex: 0.6;
+		margin-bottom: 5rem;
 	}
 
 	.메인문장박스 {

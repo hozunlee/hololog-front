@@ -21,17 +21,37 @@ export const config = {
 	}
 }
 
-export async function load() {
-	const { data } = await supabase.from('cakes').select('id, author, from, item, speaker')
-
-	const res = await fetchAPI('/posts', {
+const fetchPosts = async (page = 1, pageSize = 5) => {
+	return await fetchAPI('/posts', {
 		populate: ['cover'],
 		sort: ['id:desc'],
-		fields: ['title', 'desc', 'keyword', 'publishedAt']
+		fields: ['title', 'desc', 'keyword', 'publishedAt'],
+		pagination: { page, pageSize }
 	})
+}
+
+export async function load() {
+	const { data, error } = await supabase.from('cakes').select('id, author, from, item, speaker')
+
+	if (error) {
+		console.error('cakes data load error :>> ', error)
+	}
+
+	const postInfo = await fetchPosts()
 
 	return {
-		props: { cakes: data ?? [], posts: res }
+		props: { cakes: data ?? [], postInfo }
 		// revalidate: 10 // In seconds
+	}
+}
+
+export const actions = {
+	movePage: async ({ request }) => {
+		const { page } = Object.fromEntries(await request.formData())
+
+		const pageNumber = Number(page)
+		const postInfo = await fetchPosts(pageNumber)
+
+		return postInfo
 	}
 }
