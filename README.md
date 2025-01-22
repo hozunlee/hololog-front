@@ -3,10 +3,15 @@
 ## 기술스택
 
 App : svelteKit (SSR)
+
 Css : tailwind + shadCN
+
 DB : supabase
+
 CMS : strapi
+
 Deploy : koyeb(cms server) | vercel (app)
+
 
 ## 실행방법
 
