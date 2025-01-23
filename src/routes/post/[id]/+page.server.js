@@ -6,7 +6,8 @@ export async function load({ params }) {
 		populate: ['cover']
 	})
 
+	const { posts: post } = res
 	return {
-		post: res
+		post
 	}
 }
