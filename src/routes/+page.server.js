@@ -46,7 +46,7 @@ export async function load() {
 }
 
 export const actions = {
-	movePage: async ({ request }) => {
+	default: async ({ request }) => {
 		const { page } = Object.fromEntries(await request.formData())
 
 		const pageNumber = Number(page)

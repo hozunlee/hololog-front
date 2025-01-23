@@ -29,7 +29,7 @@
 		isLoading = true
 		scrollTo(0, 0)
 		try {
-			const res = await actionPost(`${$page.url.origin}?/movePage`, { page: movePageNumber })
+			const res = await actionPost(`/`, { page: movePageNumber })
 			posts = res.posts
 			pagination = res.pagination.pagination
 			currentPage = res.pagination.pagination.page
