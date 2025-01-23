@@ -1,10 +1,14 @@
 <script>
 	import * as Pagination from '$lib/components/ui/pagination/index.js'
+	import { Skeleton } from '$lib/components/ui/skeleton'
+
 	import ChevronLeft from 'lucide-svelte/icons/chevron-left'
 	import ChevronRight from 'lucide-svelte/icons/chevron-right'
-	import { Skeleton } from '$lib/components/ui/skeleton'
 	import LoaderCircle from 'lucide-svelte/icons/loader-circle'
+
 	import Card from './Card.svelte'
+
+	import { page } from '$app/stores'
 	import { actionPost } from './utills/post'
 
 	export let postInfo
@@ -14,7 +18,7 @@
 		pagination: { pagination }
 	} = postInfo
 
-	let { page, total, pageSize } = pagination
+	let { page: currentPage, total, pageSize } = pagination
 	let count = total
 	$: perPage = pageSize
 	$: siblingCount = 1
@@ -25,10 +29,10 @@
 		isLoading = true
 		scrollTo(0, 0)
 		try {
-			const res = await actionPost('?/movePage', { page: movePageNumber })
+			const res = await actionPost(`${$page.url.origin}?/movePage`, { page: movePageNumber })
 			posts = res.posts
 			pagination = res.pagination.pagination
-			page = res.pagination.pagination.page
+			currentPage = res.pagination.pagination.page
 			total = res.pagination.pagination.total
 			pageSize = res.pagination.pagination.pageSize
 		} finally {
