@@ -38,7 +38,7 @@
 	<div class="img-box">
 		<Image src={imgURL} />
 	</div>
-	<figure class="container">
+	<figure class="markdown-container">
 		<SvelteMarkdown {source} />
 		<footer>
 			<Giscus
@@ -70,7 +70,7 @@
 		/* padding: 10px; */
 	}
 
-	section > .container {
+	section > .markdown-container {
 		max-width: 900px;
 	}
 
@@ -118,8 +118,84 @@
 		width: 100%;
 	}
 
-	@media (max-width: 1024px) {
-		h1 {
+	.markdown-container h1 {
+		font-size: 2.5rem;
+		font-weight: 800;
+		line-height: 1.3;
+		margin: 2.5rem 0 1.5rem;
+		letter-spacing: -0.004em;
+	}
+
+	.markdown-container h2 {
+		font-size: 2rem;
+		font-weight: 700;
+		line-height: 1.4;
+		margin: 2rem 0 1.25rem;
+		border-bottom: 1px solid #eaecef;
+		padding-bottom: 0.3em;
+	}
+
+	.markdown-container h3 {
+		font-size: 1.5rem;
+		font-weight: 600;
+		line-height: 1.5;
+		margin: 1.5rem 0 1rem;
+	}
+
+	.markdown-container p {
+		margin: 1rem 0;
+		line-height: 1.8;
+		font-size: 1.125rem;
+		color: #333;
+		word-break: keep-all;
+	}
+
+	.markdown-container ul,
+	.markdown-container ol {
+		padding-left: 2rem;
+		margin: 1rem 0;
+	}
+
+	.markdown-container li {
+		margin: 0.5rem 0;
+		line-height: 1.7;
+	}
+
+	.markdown-container blockquote {
+		margin: 1.5rem 0;
+		padding: 0.5rem 1rem;
+		border-left: 4px solid #ddd;
+		color: #666;
+		background: #f8f8f8;
+	}
+
+	.markdown-container code {
+		background: #f6f8fa;
+		padding: 0.2em 0.4em;
+		border-radius: 3px;
+		font-family: monospace;
+	}
+
+	.markdown-container pre {
+		margin: 1.5rem 0;
+		padding: 1rem;
+		background: #f6f8fa;
+		border-radius: 4px;
+		overflow-x: auto;
+	}
+
+	@media (max-width: 768px) {
+		.markdown-container h1 {
+			font-size: 2rem;
+		}
+		.markdown-container h2 {
+			font-size: 1.75rem;
+		}
+		.markdown-container h3 {
+			font-size: 1.4rem;
+		}
+		.markdown-container p {
+			font-size: 1rem;
 		}
 	}
 </style>
