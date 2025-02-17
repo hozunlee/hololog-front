@@ -38,15 +38,18 @@
 <style>
 	header {
 		display: flex;
-		margin: 0 auto;
-		max-width: 64rem;
+		position: fixed;
+		left: 0;
+		right: 0;
+		top: 0;
 		height: var(--header-height);
 		align-items: center;
 		justify-content: space-between;
-		position: fixed;
-		top: 0;
-		left: 12px;
-		right: 12px;
+		max-width: 64rem;
+		margin: 0 auto;
+		padding: 0 1rem; /* 좌우 여백 추가 */
+		width: 100%;
+
 		/* background-color: gray; */
 		/* box-shadow: 0px 0px 1px 0px;
 		transition: transform 0.3s linear; */
