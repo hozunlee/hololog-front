@@ -62,7 +62,7 @@
 
 {#if 메인문장}
 	<div class="메인문장박스">
-		<button on:click={메인문장만들기}>new 🧀</button>
+		<button on:click={메인문장만들기}>🧀 new 🧀</button>
 
 		<Cake item={메인문장} />
 		<!-- <div class="button">
@@ -70,7 +70,9 @@
 			</div> -->
 	</div>
 {/if}
+
 <div class="구분선 div-transparent" />
+
 <section>
 	<!-- <span class="welcome">
 			<picture>
@@ -78,9 +80,12 @@
 				<img src={welcome_fallback} alt="Welcome" />
 			</picture>
 		</span> -->
-
 	<CardList {postInfo} />
 </section>
+
+<div class="mx-auto my-0 text-yellow-400">
+	<h1>hololog : 비교할 수 없는 Tech 기록</h1>
+</div>
 
 <style>
 	section {

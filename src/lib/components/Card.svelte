@@ -25,7 +25,7 @@
 		</a>
 	</header>
 	<div class="text-container">
-		<a href={`/post/${String(card.id)}`}><h1 class="card-title">{card.attributes.title}</h1></a>
+		<a href={`/post/${String(card.id)}`}><h2 class="card-title">{card.attributes.title}</h2></a>
 		<p class="card-desc">
 			{shortDesc}... <a href={`/post/${String(card.id)}`}>더보기</a>
 		</p>
@@ -70,15 +70,15 @@
 		color: var(--color-text);
 	}
 
-	.text-container > a > h1:hover {
+	.text-container > a > h2:hover {
 		color: rgb(0, 53, 113);
 	}
 
-	.text-container > a > h1 {
+	.text-container > a > h2 {
 		margin: 0;
-		font-size: 1.5rem;
+		font-size: 1.4rem;
 		word-break: keep-all;
-		font-weight: 500;
+		font-weight: 700;
 	}
 
 	.text-container > .card-desc {
@@ -102,7 +102,7 @@
 		padding: 3px;
 		border: 1px solid var(--color-theme-3);
 		background-color: var(--color-theme-3);
-		font-size: 0.7rem;
+		font-size: 0.55rem;
 		border-radius: 10px;
 		color: gray;
 	}
@@ -114,7 +114,7 @@
 			font-weight: 200;
 		}
 
-		.text-container > a > h1 {
+		.text-container > a > h2 {
 			font-size: 1.3rem;
 		}
 	}
