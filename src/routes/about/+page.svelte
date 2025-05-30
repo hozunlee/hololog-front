@@ -67,6 +67,11 @@ Hololog는 사용자 친화적인 인터페이스와 자연스러운 성장 경�
 					>my tech story by notion</a
 				>
 			</div>
+			<br />
+			<div>
+				<span class="형광펜"> Property tools </span> |
+				<a href="https://house.hololog.dev">https://house.hololog.dev</a>
+			</div>
 		</figure>
 
 		<figure>
