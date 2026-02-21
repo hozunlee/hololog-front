@@ -4,118 +4,106 @@
 	import dayjs from 'dayjs'
 	import Image from './Image.svelte'
 
-	const publishedAt = dayjs(card.attributes.publishedAt).format('MM/DD/YYYY')
+	const publishedAt = dayjs(card.attributes.publishedAt).format('YYYY.MM.DD')
 	/**	 * @type {Array<string>}	 */
 	let keywords
 	if (card.attributes.keyword) {
 		keywords = card.attributes.keyword.replace(/(\s*)/g, '').split(',')
 	}
-	const shortDesc = card.attributes.desc.slice(0, 100)
+	const shortDesc = card.attributes.desc ? card.attributes.desc.slice(0, 80) : ''
 
-	// 용량 작은거
-	// const imgSrc = card.attributes.cover.data.attributes.formats.thumbnail.url
-	// 기본 용량 webp 위주
 	const imgSrc2 = card.attributes.cover.data.attributes.url
 </script>
 
-<article class="">
-	<header>
-		<a class="img-hover" href={`/post/${String(card.id)}`}>
+<article class="group">
+	<header class="overflow-hidden">
+		<a class="block transition-transform duration-500 group-hover:scale-105" href={`/post/${String(card.id)}`}>
 			<Image src={imgSrc2} />
 		</a>
 	</header>
 	<div class="text-container">
-		<a href={`/post/${String(card.id)}`}><h2 class="card-title">{card.attributes.title}</h2></a>
+		<a href={`/post/${String(card.id)}`} class="block group-hover:text-blue-600 transition-colors">
+			<h2 class="card-title">{card.attributes.title}</h2>
+		</a>
 		<p class="card-desc">
-			{shortDesc}... <a href={`/post/${String(card.id)}`}>더보기</a>
+			{shortDesc}... <a href={`/post/${String(card.id)}`} class="text-blue-500 font-semibold hover:underline">더보기</a>
 		</p>
-		{#if keywords}
-			<!-- content here -->
-			<div>
+		
+		<div class="flex flex-wrap gap-2 mb-4">
+			{#if keywords}
 				{#each keywords as word}
-					<!-- content here -->
 					<span class="card-keyword">
-						{word}
+						#{word}
 					</span>
 				{/each}
-			</div>
-		{/if}
+			{/if}
+		</div>
 
 		<div class="card-time">{publishedAt}</div>
 	</div>
-	<div class="구분선 div-transparent" />
 </article>
 
 <style>
 	article {
-		margin: 1rem 0;
 		width: 100%;
-		height: 100%;
-		max-width: 700px;
+		background: white;
+		border-radius: 1.5rem;
+		border: 1px solid #f0f0f0;
+		transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 	}
+	
+	article:hover {
+		border-color: #3b82f6;
+		box-shadow: 0 10px 30px -10px rgba(59, 130, 246, 0.15);
+	}
+
 	header {
-		box-sizing: border-box;
-		max-width: 700px;
-		margin: 0 auto;
-		margin-bottom: calc(1rem * 1.1);
-		padding: 0 1rem;
+		width: 100%;
+		border-radius: 1.5rem 1.5rem 0 0;
 	}
 
 	.text-container {
-		padding: 0 1rem;
+		padding: 1.5rem;
 	}
 
-	.text-container > a {
-		text-decoration: none;
-		color: var(--color-text);
-	}
-
-	.text-container > a > h2:hover {
-		color: rgb(0, 53, 113);
-	}
-
-	.text-container > a > h2 {
+	.card-title {
 		margin: 0;
-		font-size: 1.4rem;
+		font-size: 1.25rem;
+		line-height: 1.4;
 		word-break: keep-all;
-		font-weight: 700;
+		font-weight: 800;
+		margin-bottom: 0.75rem;
 	}
 
-	.text-container > .card-desc {
-		font-size: 1rem;
-		color: var(--color-text);
+	.card-desc {
+		font-size: 0.95rem;
+		color: #4b5563;
 		margin-bottom: 1rem;
-		margin-top: 0.5rem;
+		line-height: 1.6;
 		word-break: keep-all;
-		overflow-wrap: break-word;
 	}
 
-	.text-container > .card-time {
-		line-height: 1.5;
+	.card-time {
 		font-size: 0.8rem;
-		color: #acacac;
-		margin: 1rem 0;
+		color: #9ca3af;
+		font-family: 'Fira Mono', monospace;
 	}
 
 	.card-keyword {
-		margin-right: 3px;
-		padding: 3px;
-		border: 1px solid var(--color-theme-3);
-		background-color: var(--color-theme-3);
-		font-size: 0.55rem;
-		border-radius: 10px;
-		color: gray;
+		font-size: 0.75rem;
+		color: #6b7280;
+		background: #f3f4f6;
+		padding: 0.2rem 0.6rem;
+		border-radius: 0.5rem;
+		font-weight: 500;
 	}
 
-	@media (max-width: 768px) {
-		.text-container > .card-desc {
-			font-size: 0.875rem;
-			margin-bottom: 1.5rem;
-			font-weight: 200;
+	@media (max-width: 640px) {
+		.text-container {
+			padding: 1.25rem;
 		}
-
-		.text-container > a > h2 {
-			font-size: 1.3rem;
+		.card-title {
+			font-size: 1.125rem;
 		}
 	}
 </style>

@@ -10,6 +10,7 @@
 
 	import { page } from '$app/stores'
 	import { actionPost } from './utills/post'
+	import { fade } from 'svelte/transition'
 
 	export let postInfo
 
@@ -27,7 +28,7 @@
 
 	const getPage = async (movePageNumber) => {
 		isLoading = true
-		scrollTo(0, 0)
+		scrollTo({ top: 0, behavior: 'smooth' })
 		try {
 			const res = await actionPost(`/`, { page: movePageNumber })
 			posts = res.posts
@@ -41,58 +42,84 @@
 	}
 </script>
 
-{#if isLoading}
-	<div class="space-y-4 bg-white p-4 rounded-lg shadow-md">
-		<div class="flex items-center space-x-4">
-			<Skeleton class="h-12 w-12 rounded-full" />
-			<div class="space-y-2">
-				<Skeleton class="h-4 w-[250px]" />
-				<Skeleton class="h-4 w-[200px]" />
-			</div>
-		</div>
-	</div>
-	<div class="my-10">
-		<LoaderCircle class="mr-2 h-4 w-4 animate-spin text-yellow-500" />
-	</div>
-{:else}
-	{#each posts as post (post.id)}
-		<!-- key 추가 -->
-		<Card card={post} />
-	{/each}
-{/if}
-<div>
-	<Pagination.Root {count} {perPage} {siblingCount} let:pages let:currentPage>
-		<Pagination.Content>
-			<Pagination.Item>
-				<Pagination.PrevButton on:click={() => getPage(currentPage - 1)} disabled={isLoading}>
-					<ChevronLeft class="h-4 w-4" />
-					<span class="hidden sm:block">Previous</span>
-				</Pagination.PrevButton>
-			</Pagination.Item>
-			{#each pages as page (page.key)}
-				{#if page.type === 'ellipsis'}
-					<Pagination.Item>
-						<Pagination.Ellipsis />
-					</Pagination.Item>
-				{:else}
-					<Pagination.Item>
-						<Pagination.Link
-							{page}
-							isActive={currentPage === page.value}
-							on:click={() => getPage(page.value)}
-							disabled={isLoading}
-						>
-							{page.value}
-						</Pagination.Link>
-					</Pagination.Item>
-				{/if}
+<div class="card-list-wrapper w-full max-w-7xl mx-auto px-4 md:px-8">
+	<div class="grid grid-cols-1 md:grid-cols-2 lg:gap-12 md:gap-8 gap-10">
+		{#if isLoading}
+			{#each Array(4) as _}
+				<div class="space-y-4 bg-white p-4 rounded-[2rem] border border-gray-100 shadow-sm animate-pulse">
+					<Skeleton class="aspect-video w-full rounded-[1.5rem]" />
+					<div class="space-y-3 px-2">
+						<Skeleton class="h-6 w-3/4" />
+						<Skeleton class="h-4 w-1/2" />
+						<Skeleton class="h-4 w-1/4" />
+					</div>
+				</div>
 			{/each}
-			<Pagination.Item>
-				<Pagination.NextButton on:click={() => getPage(currentPage + 1)} disabled={isLoading}>
-					<span class="hidden sm:block">Next</span>
-					<ChevronRight class="h-4 w-4" />
-				</Pagination.NextButton>
-			</Pagination.Item>
-		</Pagination.Content>
-	</Pagination.Root>
+		{:else}
+			{#each posts as post (post.id)}
+				<div in:fade={{ duration: 400 }}>
+					<Card card={post} />
+				</div>
+			{/each}
+		{/if}
+	</div>
+
+	<!-- Pagination -->
+	<div class="mt-16 mb-8 flex justify-center">
+		<Pagination.Root {count} {perPage} {siblingCount} let:pages let:currentPage>
+			<Pagination.Content class="bg-white p-2 rounded-full border border-gray-200 shadow-sm">
+				<Pagination.Item>
+					<Pagination.PrevButton 
+						on:click={() => getPage(currentPage - 1)} 
+						disabled={isLoading}
+						class="rounded-full hover:bg-gray-100 transition-colors"
+					>
+						<ChevronLeft class="h-4 w-4" />
+						<span class="hidden sm:inline-block ml-1">Prev</span>
+					</Pagination.PrevButton>
+				</Pagination.Item>
+				
+				{#each pages as page (page.key)}
+					{#if page.type === 'ellipsis'}
+						<Pagination.Item>
+							<Pagination.Ellipsis />
+						</Pagination.Item>
+					{:else}
+						<Pagination.Item>
+							<Pagination.Link
+								{page}
+								isActive={currentPage === page.value}
+								on:click={() => getPage(page.value)}
+								disabled={isLoading}
+								class={`rounded-full min-w-[40px] h-10 flex items-center justify-center transition-all ${
+									currentPage === page.value 
+									? 'bg-blue-600 text-white font-bold' 
+									: 'hover:bg-gray-100'
+								}`}
+							>
+								{page.value}
+							</Pagination.Link>
+						</Pagination.Item>
+					{/if}
+				{/each}
+
+				<Pagination.Item>
+					<Pagination.NextButton 
+						on:click={() => getPage(currentPage + 1)} 
+						disabled={isLoading}
+						class="rounded-full hover:bg-gray-100 transition-colors"
+					>
+						<span class="hidden sm:inline-block mr-1">Next</span>
+						<ChevronRight class="h-4 w-4" />
+					</Pagination.NextButton>
+				</Pagination.Item>
+			</Pagination.Content>
+		</Pagination.Root>
+	</div>
 </div>
+
+<style>
+	.card-list-wrapper {
+		margin-top: 2rem;
+	}
+</style>
