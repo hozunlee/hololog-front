@@ -1,16 +1,42 @@
 <script>
 	import { page } from '$app/stores'
 	import Image from '$lib/components/Image.svelte'
+	import Card from '$lib/components/Card.svelte'
+	import { Share2 } from 'lucide-svelte'
 	import dayjs from 'dayjs'
 	import SvelteMarkdown from 'svelte-markdown'
 	import Giscus from '$lib/components/utills/Giscus.svelte'
 
 	export let data
 
+	const relatedPosts = data.relatedPosts || []
+	const seriesName = data.seriesName
+
 	const source = data.post.attributes.content
 	const imgURL = data.post.attributes.cover.data.attributes.url
 
 	const publishedAt = dayjs(data.post.attributes.publishedAt).format('MM/DD/YYYY')
+
+	const handleShare = async () => {
+		if (navigator.share) {
+			try {
+				await navigator.share({
+					title: data.post.attributes.title,
+					text: data.post.attributes.desc,
+					url: $page.url.href
+				})
+			} catch (err) {
+				console.error('Share failed:', err)
+			}
+		} else {
+			try {
+				await navigator.clipboard.writeText($page.url.href)
+				alert('주소가 복사되었습니다.')
+			} catch (err) {
+				console.error('Clipboard failed:', err)
+			}
+		}
+	}
 </script>
 
 <svelte:head>
@@ -40,6 +66,36 @@
 	</div>
 	<figure class="markdown-container">
 		<SvelteMarkdown {source} />
+
+		{#if relatedPosts.length > 0}
+			<div class="related-posts-container">
+				<div class="related-header">
+					<div class="related-title">{seriesName ? `[이어보기] ${seriesName}` : '이어지는 글'}</div>
+					{#if seriesName}
+						<a href={`/series/${seriesName}`} class="related-view-all">전체보기</a>
+					{/if}
+				</div>
+				<div class="related-list">
+					{#each relatedPosts as post (post.id)}
+						<a href={`/post/${String(post.id)}`} class="related-item">
+							<div class="related-item-content">
+								<h3 class="related-item-title">{post.attributes.title}</h3>
+								<p class="related-item-desc">{post.attributes.desc.slice(0, 100)}...</p>
+								<div class="related-item-date">
+									{dayjs(post.attributes.publishedAt).format('MM/DD/YYYY')}
+								</div>
+							</div>
+							{#if post.attributes.cover?.data?.attributes?.url}
+								<div class="related-item-image">
+									<Image src={post.attributes.cover.data.attributes.url} />
+								</div>
+							{/if}
+						</a>
+					{/each}
+				</div>
+			</div>
+		{/if}
+
 		<footer>
 			<Giscus
 				repo="hozunlee/hololog-front"
@@ -58,6 +114,10 @@
 		</footer>
 	</figure>
 </section>
+
+<button class="floating-share-btn" on:click={handleShare} aria-label="Share">
+	<Share2 size={24} />
+</button>
 
 <style>
 	section {
@@ -197,5 +257,141 @@
 		.markdown-container p {
 			font-size: 1rem;
 		}
+	}
+
+	.related-posts-container {
+		margin-top: 4rem;
+		margin-bottom: 2rem;
+		border-top: 1px solid #eaecef;
+		padding-top: 2rem;
+	}
+
+	.related-header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 1.5rem;
+	}
+
+	.related-title {
+		font-size: 1.5rem;
+		font-weight: 700;
+	}
+
+	.related-view-all {
+		font-size: 0.9rem;
+		color: #666;
+		text-decoration: none;
+	}
+
+	.related-view-all:hover {
+		color: var(--color-theme-1);
+		text-decoration: underline;
+	}
+
+	.related-list {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+	}
+
+	.related-item {
+		display: flex;
+		text-decoration: none;
+		color: inherit;
+		border: 1px solid #eaecef;
+		border-radius: 8px;
+		padding: 1rem;
+		transition: background-color 0.2s;
+		align-items: center;
+	}
+
+	.related-item:hover {
+		background-color: #f9f9f9;
+	}
+
+	.related-item-content {
+		flex: 1;
+		min-width: 0; /* Ensures text truncation works */
+	}
+
+	.related-item-title {
+		font-size: 1.1rem;
+		font-weight: 600;
+		color: var(--color-text);
+		margin: 0 0 0.5rem 0;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+
+	.related-item-desc {
+		font-size: 0.9rem;
+		color: #666;
+		line-height: 1.5;
+		margin: 0 0 0.5rem 0;
+		display: -webkit-box;
+		-webkit-line-clamp: 2;
+		line-clamp: 2;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+	}
+
+	.related-item-date {
+		font-size: 0.8rem;
+		color: #999;
+	}
+
+	.related-item-image {
+		width: 120px;
+		height: 80px;
+		margin-left: 1rem;
+		border-radius: 4px;
+		overflow: hidden;
+		flex-shrink: 0;
+	}
+
+	/* Mobile Only Styles */
+	@media (max-width: 768px) {
+		.related-item-desc,
+		.related-item-date,
+		.related-item-image {
+			display: none;
+		}
+
+		.related-item-title {
+			margin-bottom: 0;
+			font-size: 1rem;
+			white-space: normal; /* Allow title wrap on mobile */
+		}
+
+		.related-item {
+			padding: 0.8rem 1rem;
+		}
+	}
+
+	.floating-share-btn {
+		position: fixed;
+		bottom: 2rem;
+		right: 2rem;
+		width: 3.5rem;
+		height: 3.5rem;
+		border-radius: 50%;
+		background-color: white;
+		border: 1px solid #eaecef;
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		cursor: pointer;
+		z-index: 1000;
+		transition:
+			transform 0.2s,
+			box-shadow 0.2s;
+	}
+
+	.floating-share-btn:hover {
+		transform: translateY(-2px);
+		box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
 	}
 </style>

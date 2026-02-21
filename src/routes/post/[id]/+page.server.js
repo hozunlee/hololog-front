@@ -8,7 +8,9 @@ export async function load({ params }) {
 
 	const { posts: post } = res
 
-	const bookIds = post.attributes.books?.data?.map((/** @type {{ id: any; }} */ b) => b.id) || []
+	const booksData = post.attributes.books?.data || []
+	const bookIds = booksData.map((/** @type {{ id: any; }} */ b) => b.id)
+	const seriesName = booksData[0]?.attributes?.title
 
 	let relatedPosts = []
 
@@ -34,6 +36,7 @@ export async function load({ params }) {
 
 	return {
 		post,
-		relatedPosts
+		relatedPosts,
+		seriesName
 	}
 }
